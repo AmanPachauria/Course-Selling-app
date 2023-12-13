@@ -3,7 +3,8 @@ import Signup from "./Signup.jsx"
 import Signin from "./Signin.jsx"
 import Appbar from "./Appbar.jsx"
 import AddCourse from "./AddCourse.jsx"
-
+import Courses from "./Courses.jsx"
+import Course from "./Course.jsx"
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
          <Appbar/>
           <Routes>
             <Route path={"/addcourse"} element={<AddCourse/>} />
+            <Route path={"/courses/:courseId"} element={<Course />} />
+            <Route path={"/courses"} element={<Courses/>} />
             <Route path={"/signup"} element={<Signup />} />
             <Route path={"/signin"} element={<Signin />} />
           </Routes>

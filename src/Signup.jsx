@@ -60,18 +60,6 @@ function Signup(){
                 <Button size={'large'} variant="contained"
                    
                    onClick={ () => {
-                        
-                       function callback2(data){
-                           localStorage.setItem("token", data.token);
-                           alert("Signup Completed")
-                       }
-
-                       function callback1(res){
-                           res.json().then(callback2);
-                       }   
-
-                    //    let username = document.getElementById("username").value;
-                    //    let password = document.getElementById("password").value;
 
                        fetch("http://localhost:3000/admin/signup", {
                             method: "POST",
@@ -82,7 +70,12 @@ function Signup(){
                             headers: {
                                 "Content-type": "application/json"
                             }
-                       }).then(callback1);
+                       }).then( (res) => {
+                           res.json().then( (data) => {
+                                  localStorage.setItem("token", data.token);
+                                  window.location = "/";
+                           })
+                       });
 
                    }}
                 
