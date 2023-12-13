@@ -44,7 +44,7 @@ function Course() {
 
     return <div style={{ display: "flex", justifyContent: "center"}}>
         <CourseCard course={course} />
-        <UpdateCard courses={courses} />
+        <UpdateCard courses={courses} courses={courses} setCourses={setCourses} />
 
     </div>
 
@@ -83,7 +83,6 @@ function Course() {
         const [description, setDescription] = useState("");
         const [price, setPrice] = useState("");
         const [image, setImage] = useState("");
-        const [published, setPublished] = useState("");
 
         return <Card variant={"outlined"} style={{
             width: 300,
@@ -125,15 +124,6 @@ function Course() {
             />
             <br /><br />
 
-            <TextField
-
-                onChange={(e) => { setPublished(e.target.value) }}
-                fullWidth={true}
-                label="Published"
-                variant="outlined"
-            />
-
-            <br /><br />
             <Button
                 size={"large"}
                 variant="contained"
@@ -155,7 +145,23 @@ function Course() {
                         }
                     }).then((res) => {
                         res.json().then((data) => {
-                            alert("course added");
+
+                            let updatedCourses = [];
+                            for (let i = 0; i<props.courses.length; i++) {
+                                
+                                if (props.courses[i].id == course.id) {
+                                    updatedCourses.push({
+                                        id: course.id,
+                                        title: title,
+                                        description: description,
+                                        imageLink: image,
+                                        price: price
+                                    })
+                                } else {
+                                    updatedCourses.push(props.courses[i]);
+                                }
+                            }
+                            props.setCourses(updatedCourses);
                         });
                     });
 
