@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const AdminSecret = "SECRETADMIN12345";
 
-const adminAuthenticateJwt = (req, rew, next ) => {
+const adminAuthenticateJwt = (req, res, next ) => {
     const authHeader = req.headers.authorization;
 
     if( authHeader ){
