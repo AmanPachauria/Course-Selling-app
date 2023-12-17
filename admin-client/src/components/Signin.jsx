@@ -54,11 +54,12 @@ function Signin(){
                         variant="contained"
                         onClick={ async () => {
                             const response = await axios.post(`${BASE_URL}/admin/login`, {
-                                username: email,
-                                password: password 
+                                 
                             },{
                                 headers: {
-                                    "Content-Type": "application/json"
+                                    "Content-Type": "application/json",
+                                    "username": email,
+                                    "password": password
                                 }
                             });
                             const data = response.data;

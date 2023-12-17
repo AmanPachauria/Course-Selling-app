@@ -68,7 +68,7 @@ function UpdatedCard(){
     const [price, setPrice] = useState(courseDetails.course.price);
 
     return <div style={{display:"flex", justifyContent: "center"}}>
-        <Card varint={"outlined"} style={{maxWidth: 600, marginTop: 200}}>
+        <Card varint={"outlined"} style={{maxWidth: 500, marginTop: 200}}>
             <div style={{padding: 20}}>
                 <Typography style={{marginBottom: 10}}> Update course details</Typography>
                 <TextField
@@ -100,7 +100,7 @@ function UpdatedCard(){
                       setImage(e.target.value)
                    }}
                    fullWidth={true}
-                   lable="Image link"
+                   label="Image link"
                    variant="outlined"
                 />
 
@@ -113,6 +113,7 @@ function UpdatedCard(){
                    fullWidth={true}
                    label="Price"
                    variant="outlined"
+                   type="number"
                 />
 
                 <Button
@@ -147,6 +148,8 @@ function UpdatedCard(){
 
         </Card>
 
+        
+
     </div>
 
 }
@@ -169,7 +172,7 @@ function CourseCard(props){
         >
             <img src={imageLink} style={{width: 350}}></img>
             <div style={{marginLeft: 10}}>
-                  <Typography variant="h5">{title}</Typography>
+                  <Typography variant="h6">{title}</Typography>
                   <Price />
             </div>
         </Card>

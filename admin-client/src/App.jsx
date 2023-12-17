@@ -22,10 +22,12 @@ function App() {
                 width: "100vw",
                 height: "100vh",
                 backgroundColor: "#eeeeee"
+                // backgroundColor: "#ADD8E6"
+                // backgroundColor: "#BFEFFF"
             }}
             >
                <Router>
-                   <Appbar />
+                      <Appbar />
                       <InitUser />
                         <Routes>
 
