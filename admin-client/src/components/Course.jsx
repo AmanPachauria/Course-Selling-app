@@ -7,7 +7,7 @@ import {Loading} from "./Loading";
 import { BASE_URL } from "../config";
 import { courseState } from "../store/atoms/course";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { courseTitle, coursePrice, isCourseLoading, courseImage } from "../store/selectors/course";
+import { courseTitle, courseDescription, coursePrice, isCourseLoading, courseImage } from "../store/selectors/course";
 
 function Course() {
     let { courseId } = useParams();
@@ -36,7 +36,7 @@ function Course() {
         <GrayTopper />
         <Grid container>
             <Grid item lg={8} md={12} sm={12}>
-                <UpdatedCard />
+                <UpdatedCard  />
             </Grid>
             <Grid item lg={4} md={12} sm={12}>
                 <CourseCard />
@@ -62,10 +62,17 @@ function GrayTopper() {
 function UpdatedCard(){
     const [courseDetails, setCourse] = useRecoilState(courseState);
 
-    const [title, setTitle] = useState(courseDetails.course.title);
-    const [description, setDescription] = useState(courseDetails.course.description);
-    const [image, setImage] = useState(courseDetails.course.imageLink);
-    const [price, setPrice] = useState(courseDetails.course.price);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
+    const [price, setPrice] = useState(0);
+
+    useEffect(() => {
+        setTitle(courseDetails.course.title);
+        setDescription(courseDetails.course.description);
+        setImage(courseDetails.course.imageLink);
+        setPrice(courseDetails.course.price);
+    }, [courseDetails]);
 
     return <div style={{display:"flex", justifyContent: "center"}}>
         <Card varint={"outlined"} style={{maxWidth: 500, marginTop: 200}}>
@@ -92,7 +99,6 @@ function UpdatedCard(){
                    label="Description"
                    variant="outlined"
                 />
-
                 <TextField 
                    value={image}
                    style={{marginBottom: 10}}
@@ -181,12 +187,15 @@ function CourseCard(props){
 
 function Price() {
     const price = useRecoilValue(coursePrice);
+    const description = useRecoilValue(courseDescription);
+
     return <>
-        <Typography variant="subtitle2" style={{color: "gray"}}>
-            Price
-        </Typography>
+
         <Typography variant="subtitle1">
             <b>Rs {price}</b>
+        </Typography>
+        <Typography variant="subtitle2">
+            {description}
         </Typography>
     </>
 }

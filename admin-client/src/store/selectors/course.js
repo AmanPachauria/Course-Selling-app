@@ -32,6 +32,18 @@ export const courseTitle = selector({
   },
 });
 
+export const courseDescription = selector({
+  key: 'courseDescription',
+  get: ({get}) => {
+     const state = get(courseState);
+     if( state.course){
+        return state.course.description;
+     }
+
+     return "";
+  },
+});
+
 export const coursePrice = selector({
   key: "coursePriceState",
   get: ({get}) => {

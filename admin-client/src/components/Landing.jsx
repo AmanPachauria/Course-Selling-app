@@ -21,8 +21,7 @@ export const Landing = () => {
                      <Typography variant={"h5"}>
                         A place to learn, earn and grow
                      </Typography>
-                     {/* {!userLoading && !userEmail && <div style={{display: "flex", marginTop: 20}}> */}
-                     {<div style={{display: "flex", marginTop: 20}}>
+                     {!userLoading && !userEmail && <div style={{display: "flex", marginTop: 20}}>
                            <div style={{marginRight: 10}}>
                               <Button
                                  size={"large"}

@@ -93,8 +93,17 @@ router.get("/course/:courseId", adminAuthenticateJwt, async (req, res) => {
   res.json({course});
 });
 
-// router.delete("/course/:courseId", adminAuthenticateJwt, async (req, res) => {
-   
-// })
+router.delete("/course/:courseId", adminAuthenticateJwt, async (req, res) => {
+
+   const courseId = req.params.courseId;
+   const deleteCourse = await Courses.findByIdAndDelete(courseId);
+
+   if( deleteCourse ){
+     res.json({message: "Course deleted successfullY"});
+   }
+   else{
+    res.status(404).json({message: "Course not found"});
+   }
+})
 
 module.exports = router
