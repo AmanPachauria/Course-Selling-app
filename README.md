@@ -14,7 +14,7 @@ Welcome to the Course Management System project! This application provides user 
   - [Tech Stack](#tech-stack)
   - [Authentication](#authentication)
 - [Wath Demo](#watchdemo)
-- 
+  
 ## Introduction
 
 The Course Management System is a web application for users to sign up, sign in, and view courses. Administrators can create and update courses.
