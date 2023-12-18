@@ -46,7 +46,7 @@ The frontend of this application is developed using React and Vite. State manage
 
 To run the frontend locally:
 
-1. Clone the repository: `git clone https://github.com/your-username/course-management-system.git`
+1. Clone the repository: `https://github.com/AmanPachauria/Course-Selling-app.git`
 2. Navigate to the frontend directory: `cd course-management-system/frontend`
 3. Install dependencies: `npm install` or `yarn install or npm install`
 4. Start the development server: `npm run dev` or `yarn dev`
