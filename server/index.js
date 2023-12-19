@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
   })
 
 // connect ot MongoDB 
-mongoose.connect("mongodb+srv://Course-Selling-App:Course-Selling-App@cluster0.zttzvi3.mongodb.net/Course-Selling-App-Data", {useNewUrlParser: true, useUnifiedTopology: true, dbName: "Course-Selling-App-Data"});
+mongoose.connect("mongodb+srv://amanpachauria:VmCHwHJ4cLyLI8Te@cluster0.mqutiqm.mongodb.net/", {useNewUrlParser: true, useUnifiedTopology: true, dbName: "Course-Selling-App-Data"});
 
 
 app.listen(3000, () => console.log("Server running on port 3000"));
