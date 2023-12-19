@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "build": "npm install && npm install --frefix admin-client && npm run build --frefix admin-client"
+    "build": "npm install && npm install --prefix admin-client && npm run build --prefix admin-client"
   },
   "keywords": [],
   "author": "",
