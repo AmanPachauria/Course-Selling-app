@@ -70,7 +70,7 @@ function Signin(){
                                 userEmail: email,
                                 isLoading: false
                             })
-                            navigate("/");
+                            navigate("/courses");
                         }}
                      >
                       Singin

@@ -4,25 +4,25 @@ const jwt = require("jsonwebtoken");
 const { AdminSecret } = require("../middleware/AdminAuth");
 const { adminAuthenticateJwt } = require("../middleware/AdminAuth");
 const mongoose = require("mongoose");
-// const { z } = require("zod");
+const { z } = require("zod");
 
 const router = express.Router();
 
 
-// let verifyInputProps = z.object({
-//       username: z.string().min(10).max(50).email(),
-//       password: z.string().min(8).max(40),
-// })
+let verifyInputProps = z.object({
+      username: z.string().min(10).max(50).email(),
+      password: z.string().min(8).max(40),
+})
 
 
 router.post("/signup", (req, res) => {
-  // const parsedInput = verifyInputProps.safeParse(req.body);
-  // if( !parsedInput.success ){
-  //     return res.status(411).json({ message: parsedInput.error})
-  // }
-  const { username, password } = req.body;
-  // const username = parsedInput.data.username;
-  // const password = parsedInput.data.password;
+  const parsedInput = verifyInputProps.safeParse(req.body);
+  if( !parsedInput.success ){
+      return res.status(411).json({ message: parsedInput.error})
+  }
+  // const { username, password } = req.body;
+  const username = parsedInput.data.username;
+  const password = parsedInput.data.password;
 
   Admin.findOne({ username }).then( (admin) => {
        if( admin ) {
