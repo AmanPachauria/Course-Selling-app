@@ -7,7 +7,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 
 const app = express();
