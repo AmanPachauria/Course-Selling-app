@@ -1,7 +1,6 @@
 const express = require("express");
 const { Admin, User, Courses } = require("../db");
 const jwt = require("jsonwebtoken");
-const { AdminSecret } = require("../middleware/AdminAuth");
 const { adminAuthenticateJwt } = require("../middleware/AdminAuth");
 const mongoose = require("mongoose");
 const { z } = require("zod");
@@ -23,6 +22,7 @@ router.post("/signup", (req, res) => {
   // const { username, password } = req.body;
   const username = parsedInput.data.username;
   const password = parsedInput.data.password;
+  // console.log(process.env.AdminSecretFind);
 
   Admin.findOne({ username }).then( (admin) => {
        if( admin ) {
@@ -33,7 +33,7 @@ router.post("/signup", (req, res) => {
          const newAdmin = new Admin(obj);
          newAdmin.save();
 
-         const token = jwt.sign({ username, role: 'admin'}, AdminSecret, {expiresIn: '1h'});
+         const token = jwt.sign({ username, role: 'admin'}, process.env.AdminSecretFind, {expiresIn: '1h'});
          res.json({message: "Admin created successfully", token});
        }
   })
@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
     const admin = await Admin.findOne({username});
   
     if( admin ){
-        const token = jwt.sign({username, role: 'admin'}, AdminSecret, {expiresIn: '1h'});
+        const token = jwt.sign({username, role: 'admin'}, process.env.AdminSecretFind, {expiresIn: '1h'});
         res.json({message: "Admin login successfully", token});
     }
     else{

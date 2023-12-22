@@ -65,9 +65,9 @@ function Signup(){
                       localStorage.setItem("token", data.token);
 
                       setUser({userEmail: email, isLoading: false})
-                      if( data.message ){
-                          alert(data.message);
-                      }
+                      // if( data.message ){
+                      //     alert(data.message);
+                      // }
                       navigate("/courses")
                    }}
                  

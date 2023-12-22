@@ -1,5 +1,5 @@
 const express = require("express");
-const { UserAuthenticateJwt, UserSecret } = require("../middleware/UserAuth");
+const { UserAuthenticateJwt } = require("../middleware/UserAuth");
 const { User, Courses, Admin } = require("../db");
 const jwt = require('jsonwebtoken');
 const mongoose = require("mongoose")
@@ -16,7 +16,7 @@ const router = express.Router();
        else{
           const newUser = new User({username, password});
           await newUser.save();
-          const token = jwt.sign({username, role: 'user'}, UserSecret, {expiresIn: '1h'});
+          const token = jwt.sign({username, role: 'user'}, process.env.UserSecretFind, {expiresIn: '1h'});
           res.json({ message: 'User created successfully', token})
        }
    });
@@ -25,7 +25,7 @@ const router = express.Router();
         const { username, password } = req.headers;
         const user = await User.findOne({ username, password });
         if( user ){
-            const token = jwt.sign({username, role: 'user'}, UserSecret, {expiresIn: '1h'});
+            const token = jwt.sign({username, role: 'user'}, process.env.UserSecretFind, {expiresIn: '1h'});
             res.json({message: "Logged in successfully", token})
         }
         else{
