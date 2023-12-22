@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "start": "node server/index.js",
+    "admin-client": "npm start --prefix admin-client",
+    "clientinstall": "npm install --prefix admin-client",
+    "dev": "concurrently \"npm run server\" \"npm run admin-client\"",
+    "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix admin-client && npm run build --prefix admin-client"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
